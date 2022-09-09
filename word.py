@@ -9,7 +9,9 @@ __all__ = [
     "WordEntries",
     "WordEntry",
     "WordSense",
-    "WordSubSense"]
+    "WordSubSense",
+    "WordPronounce",
+    "showWordEntries"]
 
 
 class WordId(Enum):
@@ -23,6 +25,10 @@ class WordId(Enum):
     PREPOSITION = 7
     CONJUNCTION = 8
     INTERJECTION = 9
+
+    def get_abbr(self):
+        abbrs = ["n.", "pron.", "adj.", "adv", "v.", "num.", "art.", "prep.", "conj.", "int."]
+        return abbrs[self.value]
 
 
 def getWordId(id_text: str):
@@ -74,10 +80,13 @@ WordSenseData = namedtuple(
     "WordSense", [
         "definitions", "feature", "examples", "constructions", "subsenses", "synonyms"])
 
+WordPronounceData = namedtuple(
+    "WordPronounce", [
+        "phoneticSpelling", "audio", "detail"])
 
 WordEntryData = namedtuple(
     "WordEntry", [
-        "text", "wordId", "senses", "derivatives", "phrases"])
+        "text", "wordId", "senses", "derivatives", "phrases", "pronunciations"])
 
 WordSubSenseData = namedtuple("WordSubSense", ["definitions", "examples"])
 
@@ -95,7 +104,18 @@ class WordSense(WordSenseData):
 class WordSubSense(WordSubSenseData):
     def __str__(self):
         # def_text = self.definitions[0] if self.definitions else None
-        return f"<WordSubSenseData(definitions=({len(self.definitions)}), examples=({len(self.examples)}))>"
+        return f"<WordSubSense(definitions=({len(self.definitions)}), examples=({len(self.examples)}))>"
+
+
+class WordPronounce(WordPronounceData):
+    def __str__(self):
+        return f"<WordPronounce(phoneticSpelling=('{self.phoneticSpelling}'), audio=('{self.audio.split('/')[-1]}')" \
+               f", detail=({self.detail[0]}))>"
+
+
+def showWordEntries(entries: WordEntries):
+    for key in entries.keys:
+        print(entries[key])
 
 
 if __name__ == "__main__":

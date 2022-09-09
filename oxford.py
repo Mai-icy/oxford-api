@@ -65,19 +65,22 @@ class OxfordDic:
 
                 for sig_entry in entry["entries"]:
                     word_pronunciations = []
-                    for pronunciation in sig_entry["pronunciations"]:
+                    for pronunciation in sig_entry.get("pronunciations", ()):
                         phoneticSpelling = pronunciation["phoneticSpelling"]
                         audio = pronunciation["audioFile"]
                         detail = pronunciation["dialects"]
                         word_pronunciations.append(
-                            {"phoneticSpelling": phoneticSpelling, "audio": audio, "detail": detail})
+                            WordPronounce(phoneticSpelling=phoneticSpelling, audio=audio, detail=detail))
+
                     entry_data = {
                         "text": res_data["id"],
                         "wordId": word_id,
                         "senses": tuple(
-                            _get_word_sense(se) for se in sig_entry["senses"]),
+                            _get_word_sense(se) for se in sig_entry.get("senses", ())),
                         "derivatives": derivatives,
-                        "phrases": phrases}
+                        "phrases": phrases,
+                        "pronunciations": word_pronunciations
+                    }
                     word_entry = WordEntry(**entry_data)
                     res_entries.add_data(word_id, word_entry)
             res_total.append(res_entries)
@@ -192,5 +195,6 @@ class OxfordDic:
 
 if __name__ == "__main__":
     tt = OxfordDic()
-    a = tt.fetch_inflections("get")
-    print(a)
+    a = tt.fetch_translations("verb", "zh")
+
+    showWordEntries(a[0])
