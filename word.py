@@ -15,6 +15,7 @@ __all__ = [
 
 
 class WordId(Enum):
+    NULL = -1
     NOUN = 0
     PRONOUN = 1
     ADJECTIVE = 2
@@ -25,9 +26,10 @@ class WordId(Enum):
     PREPOSITION = 7
     CONJUNCTION = 8
     INTERJECTION = 9
+    OTHER = 10
 
     def get_abbr(self):
-        abbrs = ["n.", "pron.", "adj.", "adv", "v.", "num.", "art.", "prep.", "conj.", "int."]
+        abbrs = ["n.", "pron.", "adj.", "adv", "v.", "num.", "art.", "prep.", "conj.", "int.", "other"]
         return abbrs[self.value]
 
 
@@ -70,6 +72,19 @@ class WordEntries:
         res_txt += ")>"
         return res_txt
 
+    def __add__(self, other):
+        if isinstance(other, WordEntries):
+            if not self.word == other.word:
+                raise ValueError("The words must be the same")
+        res_entries = WordEntries(self.word)
+        for key in self.keys:
+            for data_ in self[key]:
+                res_entries.add_data(key, data_)
+        for key in other.keys:
+            for data_ in other[key]:
+                res_entries.add_data(key, data_)
+        return res_entries
+
     def add_data(self, word_id, data):
         if not hasattr(self, str(word_id)):
             self[word_id] = []
@@ -94,6 +109,17 @@ WordSubSenseData = namedtuple("WordSubSense", ["definitions", "examples"])
 class WordEntry(WordEntryData):
     def __str__(self):
         return f"<WordEntry(text='{self.text}', wordId={self.wordId}, senses=[{len(self.senses)}])>"
+
+    def __add__(self, other):
+        if isinstance(other, WordEntry):
+            if not self.text == other.text:
+                raise ValueError("The words must be the same")
+            res_entries = WordEntries(self.text)
+            res_entries.add_data(other.wordId, other)
+            res_entries.add_data(self.wordId, self)
+            return res_entries
+        else:
+            raise ValueError("WordEntry can only add to WordEntry")
 
 
 class WordSense(WordSenseData):

@@ -195,6 +195,6 @@ class OxfordDic:
 
 if __name__ == "__main__":
     tt = OxfordDic()
-    a = tt.fetch_translations("verb", "zh")
-
-    showWordEntries(a[0])
+    a = tt.fetch_lemmas("pneumonoultramicroscopicsilicovolcanoconiosis")
+    # a = tt.fetch_translations("longest", "zh")
+    print(a)
