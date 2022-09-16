@@ -29,12 +29,15 @@ class WordId(Enum):
     OTHER = 10
 
     def get_abbr(self):
-        abbrs = ["n.", "pron.", "adj.", "adv", "v.", "num.", "art.", "prep.", "conj.", "int.", "other"]
+        abbrs = ["n.", "pron.", "adj.", "adv.", "v.", "num.", "art.", "prep.", "conj.", "int.", "other"]
         return abbrs[self.value]
 
 
 def getWordId(id_text: str):
-    res_id = WordId.__getattr__(id_text.upper())
+    try:
+        res_id = getattr(WordId, id_text.upper())
+    except AttributeError:
+        res_id = WordId(10)
     return res_id
 
 

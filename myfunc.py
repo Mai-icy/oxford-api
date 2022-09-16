@@ -2,10 +2,9 @@ import time
 
 import oxford
 from collections import namedtuple
-
+from typing import List
 
 ox_dic = oxford.OxfordDic()
-
 
 WordSimpleData = namedtuple(
     "WordSimpleData", [
@@ -33,6 +32,7 @@ class WordSimple(WordSimpleData):
 
 
 def lookUpWordsSimple(word: str, *, sense_limit=3):
+    """查单词，并获得简单释义和音标以及词性"""
     result_simple_words = []
     lemmas_words = ox_dic.fetch_lemmas(word)
 
@@ -82,11 +82,39 @@ def lookUpWordsSimple(word: str, *, sense_limit=3):
     return result_simple_words
 
 
+def print_to_str(simple_words: List[WordSimple]):
+    ps_dict = {}
+    word = simple_words[0].text
+
+    for wd in simple_words:
+        if wd.phoneticSpelling not in ps_dict:
+            ps_dict[wd.phoneticSpelling] = [wd]
+        else:
+            ps_dict[wd.phoneticSpelling].append(wd)
+
+    res = ""
+
+    for ps in ps_dict:
+        res_text_wd = f"{word}\t"
+
+        res_text_wd += "||".join((simple_wd.wordId.get_abbr() + "\t" + ';'.join(simple_wd.sense))
+                                 for simple_wd in ps_dict[ps])
+
+        res += res_text_wd + "\t/" + ps + "/ \n"
+    return res.strip()
+
+
+def main(w):
+    simple = lookUpWordsSimple(w)
+    res_ = print_to_str(simple)
+    return res_
+
+
 if __name__ == "__main__":
-    res = lookUpWordsSimple("books")
-    print(res)
-    for i in res:
-        print(i)
-
-
-
+    # res1 = lookUpWordsSimple("eat")
+    #
+    # for i in res1:
+    #     print(i)
+    #
+    # print_to_str(res1)
+    print(main("content"))

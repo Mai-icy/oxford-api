@@ -67,7 +67,7 @@ class OxfordDic:
                     word_pronunciations = []
                     for pronunciation in sig_entry.get("pronunciations", ()):
                         phoneticSpelling = pronunciation["phoneticSpelling"]
-                        audio = pronunciation["audioFile"]
+                        audio = pronunciation.get("audioFile")
                         detail = pronunciation["dialects"]
                         word_pronunciations.append(
                             WordPronounce(phoneticSpelling=phoneticSpelling, audio=audio, detail=detail))
@@ -195,6 +195,6 @@ class OxfordDic:
 
 if __name__ == "__main__":
     tt = OxfordDic()
-    a = tt.fetch_lemmas("pneumonoultramicroscopicsilicovolcanoconiosis")
-    # a = tt.fetch_translations("longest", "zh")
-    print(a)
+    # a = tt.fetch_lemmas("pneumonoultramicroscopicsilicovolcanoconiosis")
+    a = tt.fetch_translations("eat", "zh")
+    print(a[0])
