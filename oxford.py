@@ -4,8 +4,8 @@ import requests
 from word import *
 from typing import List
 
-APP_ID = "6ff9cb88"
-APP_KEY = "201bcb60cd31df08961b6a0b8d40be74"
+APP_ID = "5b0f053a"
+APP_KEY = "67506b86c829e3a46bddae185324f0b8"
 
 
 class OxfordDic:

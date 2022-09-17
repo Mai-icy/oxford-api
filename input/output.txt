@@ -1,0 +1,32 @@
+competence	n.	能力;技能;权限	/ˈkɒmpɪt(ə)ns/
+governance	n.	统治	/ˈɡʌv(ə)nəns/
+amid	prep.	在…中;环绕在…中	/əˈmɪd/
+rightfully	adv.	合法地,理所应当地	/ˈrʌɪtfʊli/
+numerous	adj.	许多的;有许多成员组成的	/ˈnjuːm(ə)rəs/
+gut	n.	内脏;本能的;内部结构,要点||v.	取出…的内脏;彻底毁坏…的内部	/ɡʌt/
+commission	n.	委员会;佣金;手续费||v.	委托创作,委托写,委托做;授予…委任状;将…投入使用	/kəˈmɪʃ(ə)n/
+persistence	n.	坚持不懈;持续存在	/pəˈsɪst(ə)ns/
+adolescent	n.	青少年||adj.	青春期的;幼稚的	/adəˈlɛs(ə)nt/
+authoritative	adj.	专断的;权威性的	/ɔːˈθɒrɪtətɪv/
+brine	n.	腌制盐水;海水	/brʌɪn/
+mozzarella	n.	莫泽雷勒干酪	/ˌmɒtsəˈrɛlə/
+sodium	n.	钠	/ˈsəʊdɪəm/
+vampire	n.	吸血鬼	/ˈvampʌɪə/
+dull	adj.	暗淡的;阴沉的;闷声的||v.	使…变暗淡;使…变低沉;使…迟钝	/dʌl/
+span	n.	持续时间段;范围;宽度,一拃,臂展,翼展||v.	跨越;持续;涵盖	/span/
+attentive	adj.	专心的;关心的	/əˈtɛntɪv/
+incline	v.	弯下;使…倾向于;使…倾斜	/ɪnˈklʌɪn/ 
+incline	n.	斜坡	/ˈɪnklʌɪn/
+scold	v.	责骂;责骂	/skəʊld/
+forbidden	adj.	被禁止的	/fəˈbɪd(ə)n/
+respondent	n.	被告	/rɪˈspɒnd(ə)nt/
+induce	v.	劝说;催产;感应	/ɪnˈdjuːs/
+overindulgence	n.	过分沉溺;过分纵容	/ˌəʊv(ə)rɪnˈdʌldʒ(ə)ns/
+refrain	n.	副歌,叠句;一再重复的话||v.	忍住,节制	/rɪˈfreɪn/
+obsession	n.	着迷;让人着迷的对象,执念	/əbˈsɛʃ(ə)n/
+salvation	n.	得救;拯救	/salˈveɪʃ(ə)n/
+recount	v.	详细叙述;重新计算	/rɪˈkaʊnt/ 
+recount	n.	重新计算	/ˈriːkaʊnt/
+upbringing	n.	抚育	/ˈʌpbrɪŋɪŋ/
+immigrant	n.	（外来）移民	/ˈɪmɪɡr(ə)nt/
+subscription	n.	订购;预订费;认捐	/səbˈskrɪpʃ(ə)n/
